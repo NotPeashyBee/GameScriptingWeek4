@@ -1,0 +1,92 @@
+-- #1
+-- Ask the user for some text, convert the text into all caps
+print("Enter some text:")
+someText = io.read()
+print(string.upper(someText))
+
+
+-- #2
+-- Ask the user for 2 numbers, add them together and print the result
+print("Enter the first number:")
+num1 = tonumber(io.read())
+while num1 == nil do
+  print("That's not a number~! Please try again:")
+  num1 = tonumber(io.read())
+end
+
+print("Enter the second number:")
+num2 = tonumber(io.read())
+while num2 == nil do
+  print("That's not a number~! Please try again:")
+  num2 = tonumber(io.read())
+end
+
+total = num1 + num2
+print("The total is: " .. total)
+
+
+-- #3
+-- Get an unknown amount of numbers from the user and add them together
+continueVal = "y"
+total = 0
+
+while continueVal == "y" do
+  print("Enter a number:")
+  newNumber = tonumber(io.read())
+  while newNumber == nil do
+    print("Not a number, try again~!")
+    newNumber = tonumber(io.read())
+  end
+
+  total = total + newNumber
+
+  print("Do you want to enter another number? y for yes, n for no")
+  continueVal = io.read()
+end
+
+print("The total of all numbers is: " .. total)
+
+
+-- #4
+-- Have the user define a maximum whole number, print out a random number between 0 and their number.
+-- Allow the user to play again or quit
+continueVal = "y"
+math.randomseed(os.time())
+
+while continueVal == "y" do
+  print("Give me a max value:")
+  maxValue = tonumber(io.read())
+  while maxValue == nil do
+    print("Invalid input. Please enter a valid number.")
+    maxValue = tonumber(io.read())
+  end
+
+  randomValue = math.random(0, maxValue)
+  print("Random number: " .. randomValue)
+
+  print("Do you want to play again? y for yes, n for no")
+  continueVal = io.read()
+end
+
+
+-- #5
+-- Get a random number. If the number is even print “RIGHT”, if it’s odd, print “LEFT”.
+-- Do this ten times. Print out how many times it was “LEFT” and how many times it was “RIGHT”.
+
+math.randomseed(os.time())
+evenCounter = 0
+oddCounter = 0
+
+for x = 1, 10 do
+  myRandomNum = math.random(1, 100)
+  print(myRandomNum)
+  if myRandomNum % 2 == 0 then
+    print("Even")
+    evenCounter = evenCounter + 1
+  else
+    print("Odd")
+    oddCounter = oddCounter + 1
+  end
+end
+
+print("There were " .. evenCounter .. " even numbers and " .. oddCounter .. " odd numbers!")
